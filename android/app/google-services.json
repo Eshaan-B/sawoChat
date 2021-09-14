@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "400872802022",
+    "project_id": "sawochat-bc8dd",
+    "storage_bucket": "sawochat-bc8dd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:400872802022:android:aa3d8999e6b4057d949d27",
+        "android_client_info": {
+          "package_name": "com.example.sawo_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "400872802022-jheub8fv1idkg2ev8m2fq9qrn3jsa4kj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsrXn7EDVZpOnUL-P41tQ5euOMxsI4QMM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "400872802022-jheub8fv1idkg2ev8m2fq9qrn3jsa4kj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
