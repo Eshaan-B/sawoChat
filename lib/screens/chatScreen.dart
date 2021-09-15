@@ -28,12 +28,21 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final args =
+        ModalRoute.of(context)!.settings.arguments as Map<String, String>;
+    final uid = args["uid"];
+    final username = args["username"];
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
+        leading: Container(),
+        actions: [
+          IconButton(onPressed: () {}, icon: Icon(Icons.logout),color: Colors.black,),
+        ],
         backgroundColor: Colors.amber,
         title: Text(
-          "Username",
-          style: TextStyle(color: Colors.black),
+          "Chatroom",
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
         elevation: 5,
       ),
@@ -57,7 +66,9 @@ class _ChatScreenState extends State<ChatScreen> {
                   });
             },
           )),
-          SendMessage()
+          SendMessage(
+            uid: uid,
+          )
         ],
       ),
     );

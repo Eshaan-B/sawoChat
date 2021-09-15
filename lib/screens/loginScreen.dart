@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-
+import 'dart:convert';
 import 'package:sawo/sawo.dart';
+
+import 'chatScreen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -18,15 +20,27 @@ class _LoginScreenState extends State<LoginScreen> {
   );
 
   // user payload
-  String user = "";
+  dynamic user;
+
+  void test() {
+    print("Test pressed");
+    print(jsonDecode(user)["user_id"]);
+  }
 
   void payloadCallback(context, payload) {
     if (payload == null || (payload is String && payload.length == 0)) {
       payload = "Login Failed :(";
+    } else {
+      setState(() {
+        user = payload;
+      });
+      Navigator.of(context)
+          .pushReplacementNamed(ChatScreen.routeName, arguments: {
+        "uid": jsonDecode(user)["user_id"].toString(),
+        "username":
+            jsonDecode(user)["customFieldInputValues"]["username"].toString(),
+      });
     }
-    setState(() {
-      user = payload;
-    });
   }
 
   @override
@@ -43,7 +57,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 "UserData :- $user",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
               ),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -55,19 +71,16 @@ class _LoginScreenState extends State<LoginScreen> {
                       borderRadius: BorderRadius.circular(30.0),
                       child: MaterialButton(
                         onPressed: () async {
-                          try {
-                            dynamic result = await sawo.signIn(
-                              context: context,
-                              identifierType: 'phone_number_sms',
-                              callback: payloadCallback,
-                            );
-                            print("request fetched");
-                            print(result);
-                          } catch (err) {
-                            print(err);
-                          }
+                          sawo.signIn(
+                            context: context,
+                            identifierType: 'phone_number_sms',
+                            callback: payloadCallback,
+                          );
                         },
-                        child: Text('Phone Login',style: TextStyle(color: Colors.white),),
+                        child: Text(
+                          'Phone Login',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                     ),
                   ),

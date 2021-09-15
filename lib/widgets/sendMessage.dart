@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SendMessage extends StatelessWidget {
+  final uid;
+  SendMessage({required this.uid});
   final TextEditingController _controller = TextEditingController();
 
   @override
@@ -26,7 +28,7 @@ class SendMessage extends StatelessWidget {
             if(_controller.text.isEmpty) return;
             FirebaseFirestore.instance
                 .collection('chats')
-                .add({'text':_controller.text.toString(),'user': "currentUser"});
+                .add({'text':_controller.text.toString(),'user': uid});
           },
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 17),
