@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+import 'screens/welcomeScreen.dart';
 import 'screens/chatScreen.dart';
 import 'screens/splashScreen.dart';
 
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
             ),
             home: appSnapshot.connectionState != ConnectionState.done
                 ? SplashScreen()
-                : ChatScreen(),
+                : WelcomeScreen(),
             routes: {
               SplashScreen.routeName: (ctx) => SplashScreen(),
               ChatScreen.routeName: (ctx) => ChatScreen(),
