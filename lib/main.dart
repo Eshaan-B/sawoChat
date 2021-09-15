@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'screens/welcomeScreen.dart';
+import 'screens/loginScreen.dart';
 import 'screens/chatScreen.dart';
 import 'screens/splashScreen.dart';
 
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
                 : WelcomeScreen(),
             routes: {
               SplashScreen.routeName: (ctx) => SplashScreen(),
+              LoginScreen.routeName: (ctx) => LoginScreen(),
               ChatScreen.routeName: (ctx) => ChatScreen(),
             },
           );

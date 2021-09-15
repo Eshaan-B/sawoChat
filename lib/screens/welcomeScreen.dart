@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
-import 'chatScreen.dart';
+import 'loginScreen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   static const String id = "welcomeScreen";
@@ -41,7 +41,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
 
   void navigate(String screen) {
     if (screen == "chats")
-      Navigator.of(context).pushNamed(ChatScreen.routeName);
+      Navigator.of(context).pushNamed(LoginScreen.routeName);
   }
 
   @override
@@ -107,25 +107,6 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                         padding: EdgeInsets.symmetric(vertical: 16.0),
                         child: Material(
                           elevation: 5.0,
-                          color: Colors.black54,
-                          borderRadius: BorderRadius.circular(30.0),
-                          child: MaterialButton(
-                            onPressed: () {
-                              navigate('chats');
-                            },
-                            minWidth: 200.0,
-                            height: 42.0,
-                            child: Text(
-                              'Login',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 16.0),
-                        child: Material(
-                          elevation: 5.0,
                           color: Colors.black87,
                           borderRadius: BorderRadius.circular(30.0),
                           child: MaterialButton(
@@ -135,7 +116,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                             minWidth: 200.0,
                             height: 42.0,
                             child: Text(
-                              'Register',
+                              "Let's go!",
                               style: TextStyle(color: Colors.white),
                             ),
                           ),
