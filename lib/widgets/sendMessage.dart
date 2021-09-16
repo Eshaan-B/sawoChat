@@ -4,7 +4,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SendMessage extends StatelessWidget {
   final uid;
-  SendMessage({required this.uid});
+  final username;
+  final Function scroll;
+
+  SendMessage(
+      {required this.uid, required this.username, required this.scroll});
+
   final TextEditingController _controller = TextEditingController();
 
   @override
@@ -23,12 +28,17 @@ class SendMessage extends StatelessWidget {
           ),
         ),
         ElevatedButton(
-          style: ElevatedButton.styleFrom(primary: Color(0xffFCD34D)),
-          onPressed: () {
-            if(_controller.text.isEmpty) return;
-            FirebaseFirestore.instance
-                .collection('chats')
-                .add({'text':_controller.text.toString(),'user': uid});
+          style: ElevatedButton.styleFrom(primary: Colors.amber),
+          onPressed: () async {
+            if (_controller.text.isEmpty) return;
+            await FirebaseFirestore.instance.collection('chats').add({
+              'text': _controller.text.toString(),
+              'user': uid,
+              'username': username,
+              'createdAt': Timestamp.now(),
+            });
+            _controller.clear();
+            scroll();
           },
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 17),

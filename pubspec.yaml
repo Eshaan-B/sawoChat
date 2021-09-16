@@ -14,6 +14,7 @@ dependencies:
   firebase_core: ^1.6.0
   sawo: ^0.1.2
   animated_text_kit: ^4.2.1
+  flutter_chat_bubble: ^2.0.0
 
 
 
